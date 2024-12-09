@@ -142,38 +142,20 @@
       <div></div>
 
       <!-- Recent Updates section -->
-      <!-- Recent Updates section -->
       <div class="recent_updates">
         <h2>Actualizaciones Recientes</h2>
 
-        <div class="updates fade-in">
+        <div th:each="notificacion : ${notificaciones}" class="updates fade-in">
           <div class="profile-photo1">
             <img src="images/pic-1.jpg" alt="Perfil de Estudiante">
           </div>
           <div class="message">
-            <p><b>¡Felicidades!</b> Has completado la Sección 1 de tu curso.</p>
-          </div>
-        </div>
-
-        <div class="updates fade-in">
-          <div class="profile-photo1">
-            <img src="images/pic-1.jpg" alt="Perfil de Estudiante">
-          </div>
-          <div class="message">
-            <p>Has recibido un <b>comentario</b> en tu última tarea.</p>
-          </div>
-        </div>
-
-        <div class="updates fade-in">
-          <div class="profile-photo1">
-            <img src="images/pic-1.jpg" alt="Perfil de Estudiante">
-          </div>
-          <div class="message">
-            <p><b>¡Has ganado una medalla!</b> por tu esfuerzo en el curso!</p>
+            <p
+              th:text="${notificacion.contenido}">
+            </p>
           </div>
         </div>
       </div>
-
 
       <!-- Sales Analytics section -->
       <div class="sales_analytics">
@@ -230,7 +212,6 @@
 
     </div>
   </div>
-  </div>
 
   <footer class="footer">
     &copy; LMS @ 2024 <span>Desarrollado por Eqipo LMS</span> | Todos los derechos reservados.
@@ -256,7 +237,7 @@
     };
   </script>
   <!-- custom js file link  -->
-  <script src="js/alumno/scriptA.js"></script>
+  <script src="/js/alumno/scriptA.js"></script>
 
 </body>
 

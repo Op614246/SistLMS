@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -87,9 +90,17 @@ public class NotificacionController {
         Inscripcion inscripcion = inscripcionRepository.findByUsuarioIdAndCursoId(alumnoId, cursoId)
                 .orElseThrow(() -> new RuntimeException("No se encontró la inscripción para el alumno en este curso."));
 
-        // Buscar el progreso relacionado con la inscripción
+        // Verificar si existe un progreso relacionado con la inscripción
         Progreso progreso = progresoRepository.findByInscripcionIdinscripcion(inscripcion.getIdinscripcion())
-                .orElseThrow(() -> new RuntimeException("No se encontró el progreso del alumno."));
+                .orElseGet(() -> {
+                    // Si no existe el progreso, crear uno nuevo
+                    Progreso nuevoProgreso = new Progreso();
+                    nuevoProgreso.setInscripcion(inscripcion);
+                    nuevoProgreso.setProgresoEvaluacion("Sin avance"); // Inicializa con valores predeterminados
+                    nuevoProgreso.setProgresoObjetivo("Sin objetivos");
+                    nuevoProgreso.setComentarios("Sin comentarios");
+                    return progresoRepository.save(nuevoProgreso); // Guardar y devolver el nuevo progreso
+                });
 
         // Crear una nueva notificación
         Notificacion notificacion = new Notificacion();
@@ -126,6 +137,27 @@ public class NotificacionController {
                     notificacion.getContenido() // Contenido del mensaje
             );
         }).collect(Collectors.toList());
+    }
+
+    @DeleteMapping("/notificaciones/{id}")
+    @ResponseBody
+    public ResponseEntity<String> eliminarNotificacion(@PathVariable Long id, Authentication authentication) {
+        // Obtener al terapeuta (usuario autenticado)
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        Usuario terapeuta = userDetails.getUsuario();
+
+        // Validar que el usuario tiene el rol de terapeuta
+        if (terapeuta.getRoles().stream().noneMatch(rol -> rol.getIdrol() == 2)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body("El usuario autenticado no tiene permisos para eliminar notificaciones.");
+        }
+
+        // Verificar que la notificación exista y pertenezca al terapeuta
+        Notificacion notificacion = notificacionRepository.findById(id).orElse(null);
+
+        // Eliminar la notificación
+        notificacionRepository.delete(notificacion);
+        return ResponseEntity.ok("Notificación eliminada correctamente.");
     }
 
 }
