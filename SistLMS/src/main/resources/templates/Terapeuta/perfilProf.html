@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Perfil</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/css/terapeuta/style.css">
+   <link rel="stylesheet" href="/css/terapeuta/noti.css">
+   <link rel="stylesheet" href="/css/terapeuta/crearCurso.css">
+
+</head>
+
+<body>
+
+
+
+   <section class="user-profile">
+
+    <div th:replace="fragments/headerProf :: headerProf"></div>
+    <div th:replace="fragments/headerProf :: sidebarProf"></div>
+    <div id="overlay"></div>
+    <div th:replace="fragments/headerProf :: formCurso"></div>
+
+      <h1 class="heading">your profile</h1>
+
+      <div class="info">
+
+         <div class="user">
+            <img src="images/pic-7.jpg" alt="">
+            <h3 class="name"
+               th:text="${#authentication.principal.nombre} + ' ' + ${#authentication.principal.apellido}"></h3>
+            <!-- Muestra el nombre del usuario logueado -->
+            <p class="role">
+               <span sec:authorize="hasRole('ADMIN')">Administrador</span>
+               <span sec:authorize="hasRole('TERAPEUTA')">Terapeuta</span>
+               <span sec:authorize="hasRole('ESTUDIANTE')">Estudiante</span>
+            </p>
+            <a href="update.html" class="inline-btn">Cambiar Correo</a>
+            <a href="Act.Contr.html" class="inline-btn">Cambiar Contraseña</a>
+         </div>
+
+         <div class="box-container">
+
+            <div class="box">
+               <div class="flex">
+                  <i class="fas fa-bookmark"></i>
+                  <div>
+                     <span>4</span>
+                     <p>saved playlist</p>
+                  </div>
+               </div>
+               <a href="#" class="inline-btn">view playlists</a>
+            </div>
+
+            <div class="box">
+               <div class="flex">
+                  <i class="fas fa-heart"></i>
+                  <div>
+                     <span>33</span>
+                     <p>videos liked</p>
+                  </div>
+               </div>
+               <a href="#" class="inline-btn">view liked</a>
+            </div>
+
+            <div class="box">
+               <div class="flex">
+                  <i class="fas fa-comment"></i>
+                  <div>
+                     <span>12</span>
+                     <p>videos comments</p>
+                  </div>
+               </div>
+               <a href="#" class="inline-btn">view comments</a>
+            </div>
+
+         </div>
+      </div>
+
+   </section>
+
+   <footer class="footer">
+      &copy; LMS @ 2024 <span>Desarrollado por Eqipo LMS</span> | Todos los derechos reservados.
+   </footer>
+
+
+   <!-- custom js file link  -->
+   <script src="/js/terapeuta/crearCurso.js"></script>
+   <script src="/js/terapeuta/scriptA.js"></script>
+   <script src="/js/calendario.js"></script>
+
+</body>
+
+</html>

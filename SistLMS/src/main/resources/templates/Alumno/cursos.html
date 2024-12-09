@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head> 
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Cursos</title>
+
+   <!-- Font Awesome CDN Link -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+
+   <!-- Flatpickr CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <!-- Custom CSS File Link -->
+   <link rel="stylesheet" href="/css/alumno/styleA.css" />
+   <link rel="stylesheet" href="/css/alumno/noti.css">
+   
+</head>
+
+<body>
+   <div th:replace="fragments/header :: header"></div>
+   <div th:replace="fragments/header :: sidebar"></div>
+
+   
+   <section class="courses">
+      <h1 class="heading">Cursos</h1>
+
+      <div class="box-container">
+         <!-- Iterar sobre los cursos -->
+         <div th:each="curso : ${cursos}" class="box">
+             <div class="tutor">
+                 <img src="images/pic-1.jpg" alt="Tutor" />
+                 <div class="info">
+                     <h3 th:text="${cursoTerapeutas[curso.idcurso]}">Nombre del terapeuta</h3>
+                     <span th:text="${curso.duracion + ' sesiones'}">Duración</span>
+                 </div>
+             </div>
+             <div class="thumb">
+                 <img th:src="@{${curso.imagenUrl}}" alt="Imagen del curso" />
+             </div>
+             <h3 class="title" th:text="${curso.nombre}">Nombre del Curso</h3>
+             <a href="secciones.html" class="arrow-btn">
+                 <i class="fas fa-arrow-right"></i>
+             </a>
+         </div>
+     </div>
+   </section>
+
+   <footer class="footer">
+      &copy; LMS @ 2024  <span>Desarrollado por Eqipo LMS</span> | Todos los derechos reservados.
+   </footer>
+
+   <!-- Flatpickr JS -->
+   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+   <script>
+      // Inicializar Flatpickr
+      flatpickr("#calendar", {
+         dateFormat: "d/m/Y", // Formato de fecha
+         allowInput: false, // No permitir entrada manual
+         onClose: function (selectedDates, dateStr, instance) {
+            document.getElementById("calendar").style.display = "none"; // Ocultar el campo de entrada después de seleccionar
+         },
+      });
+
+      // Hacer que el calendario se muestre al hacer clic en el ícono
+      document.getElementById("calendar-btn").onclick = function () {
+         document.getElementById("calendar").style.display = "block"; // Mostrar el campo de entrada
+         document.getElementById("calendar").click(); // Simula un clic en el campo de entrada para abrir el calendario
+      };
+   </script>
+   <!-- custom js file link  -->
+   <script src="/js/alumno/scriptA.js"></script>
+</body>
+
+</html>

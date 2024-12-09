@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(100deg, #000000, #00000020), url('../images/login.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.formulario__register .form-label .span{
+    color: #dcba0e;
+}
+main {
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 110px;
+}
+
+.contenedor__todo {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    margin: 90px 270px ;
+}
+
+.caja__trasera {
+    width: 100%;
+    top: -50px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    background-color: rgba(19, 139, 103, 0.3);
+    position: relative; /* Asegura que la caja trasera esté detrás */
+    z-index: 1; /* Coloca la caja trasera en un índice bajo */
+}
+
+
+.caja__trasera div {
+    margin: 100px 40px;
+    color: white;
+    transition: all 500ms;
+}
+
+.caja__trasera div p,
+.caja__trasera div button {
+    margin-top: 30px;
+}
+
+.caja__trasera div h3 {
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.caja__trasera button {
+    padding: 10px 40px;
+    border: 2px solid #fff;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    transition: all 300ms;
+}
+
+.caja__trasera button:hover {
+    background: #fff;
+    color: #4dd282;
+}
+
+.contenedor__login, .contenedor__register {
+    width: 100%;
+    max-width: 380px;
+    position: absolute;
+    top: 50%; /* Centra el formulario verticalmente */
+    left: 50%; /* Centra el formulario horizontalmente */
+    transform: translate(1%, -60%); /* Ajusta para centrar completamente */
+    z-index: 10; /* Coloca los formularios en un índice superior a la caja trasera */
+    transition: left 500ms cubic-bezier(0.175,0.885,0.320,1.275);
+}
+
+.formulario__login {
+    width: 100%;
+    padding: 80px 20px;
+    background: #fff;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra para resaltar sobre el fondo */
+}
+.formulario__register {
+    width: 150%;
+    max-width: 480px; 
+    padding: 30px 20px;
+    transform: translate(-1%, -60%);
+    background: #fff;
+    position: absolute;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra para resaltar sobre el fondo */
+}
+
+.formulario__register .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.formulario__register .mb-3{
+    flex: 1;
+    min-width: 50%; /* Garantiza que cada campo ocupe la mitad del ancho */
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+.formulario__register button {
+    display: block;
+    margin: 20px auto 0; /* Centra el botón */
+    padding: 10px 40px;
+    border: none;
+    font-size: 14px;
+    background: #4dd282;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5%;
+    
+    
+}
+
+.mb-3 .row {
+
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Estilo para cada elemento individual */
+.mb-3 .col-6.col-md-4 label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+}
+.mb-3 input[type="checkbox"] {
+  
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4dd282;
+    border-radius: 4px;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.2s ease, border 0.2s ease;
+}
+
+.mb-3 input[type="checkbox"]:checked {
+    background-color: #4dd282;
+    border-color: #4dd282;
+}
+.mb-3 input[type="checkbox"]:checked::after {
+    content: "✓";
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 1px;
+    left: 3px;
+}
+
+/* Hover y focus para el checkbox */
+.mb-3 input[type="checkbox"]:hover {
+    border-color: #3fb871;
+}
+
+.mb-3 input[type="checkbox"]:focus {
+    outline: 2px solid #3fb871;
+    outline-offset: 2px;
+}
+
+.formulario__login h2, .formulario__register h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4dd282;
+}
+
+.formulario__login input, .formulario__register input, .formulario__register textarea {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    border: none;
+    background: #F2F2F2;
+    font-size: 16px;
+    outline: none;
+}
+
+.formulario__login button, .formulario__register button {
+    padding: 10px 40px;
+    margin-top: 40px;
+    border: none;
+    font-size: 14px;
+    background: #4dd282;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5%;
+   
+}
+
+@media screen and (max-width: 850px) {
+    main {
+        margin-top: 50px;
+    }
+
+    .caja__trasera {
+        max-width: 350px;
+        height: 300px;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .caja__trasera div {
+        margin: 0;
+        position: absolute;
+    }
+
+    .contenedor__login, .contenedor__register {
+        top: -10px;
+        left: -5px;
+        margin: auto;
+    }
+
+    .formulario__login, .formulario__register {
+        position: relative;
+    }
+}

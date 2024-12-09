@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Comentarios</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/terapeuta/style.css">
+    <link rel="stylesheet" href="/css/terapeuta/comentarios.css">
+    <link rel="stylesheet" href="/css/terapeuta/crearCurso.css">
+</head>
+
+<body>
+
+    <div th:replace="fragments/headerProf :: headerProf"></div>
+    <div th:replace="fragments/headerProf :: sidebarProf"></div>
+
+    <div id="overlay"></div>
+    <div th:replace="fragments/headerProf :: formCurso"></div>
+
+    <div class="feedback-container">
+        <h1>Enviar Comentarios Personalizados</h1>
+        <form id="feedbackForm" action="/notificaciones/enviar" method="post">
+            <div class="feedback-section">
+                <label for="cursoSelect">Seleccionar Curso:</label>
+                <select id="cursoSelect" name="cursoId" required>
+                    <option value="">Seleccione un curso</option>
+                    <option th:each="curso : ${cursos}" th:value="${curso.idcurso}" th:text="${curso.nombre}"></option>
+                </select>
+            </div>
+
+            <div class="feedback-section">
+                <label for="studentSelect">Seleccionar Alumno:</label>
+                <select id="studentSelect" name="alumnoId" required>
+                    <option value="">Seleccione un alumno</option>
+                </select>
+            </div>
+
+            <div class="feedback-section">
+                <label for="feedbackText">Comentario:</label>
+                <textarea id="feedbackText" name="comentario" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" id="sendFeedbackButton">Enviar Comentario</button>
+        </form>
+
+
+        <div id="feedbackList" class="saved-feedback">
+            <h2>Comentarios Enviados</h2>
+            <div>
+                <ul id="feedbackItems"></ul>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; copyright @ 2024 by <span>mr. web designer</span> | all rights reserved!
+    </footer>
+
+
+    <script src="/js/terapeuta/comentarios.js"></script>
+    <!-- custom js file link  -->
+    <script src="/js/terapeuta/script.js"></script>
+    <script src="/js/terapeuta/crearCurso.js"></script>
+</body>
+
+</html>

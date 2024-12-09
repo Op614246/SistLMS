@@ -1,0 +1,130 @@
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.modal-content {
+    position: relative;
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    font-size: 2.0rem;
+    text-align: center;
+}
+
+.modal label {
+    display: block;
+    margin: 15px 0 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.modal input[type="text"],
+.modal input[type="file"],
+.modal textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.modal button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #66BB6A;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.modal button:hover {
+    background-color: #4CAF50;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #007bff; /* Azul del botón */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el cursor */
+}
+
+/* Estilos para modo oscuro */
+body.dark .modal {
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto claro */
+    border: 1px solid #444; /* Borde más visible */
+}
+
+body.dark .modal input[type="text"],
+body.dark .modal input[type="file"],
+body.dark .modal textarea {
+    background-color: #444; /* Fondo de los inputs */
+    color: #fff; /* Texto claro */
+    border: 1px solid #666; /* Borde */
+}
+
+body.dark .modal button {
+    background-color: #66BB6A; /* Fondo del botón */
+}
+
+body.dark .modal button:hover {
+    background-color: #4CAF50; /* Fondo del botón al pasar el cursor */
+    color: #fff;
+}
+
+/* Estilos para la "X" de cierre en modo oscuro */
+body.dark .close-btn {
+    color: #fff; /* Hacer que la "X" sea blanca en modo oscuro */
+    font-size: 2rem; /* Aumentar el tamaño de la "X" */
+    top: 5px; /* Ajustar la posición vertical */
+    right: 10px; /* Ajustar la posición horizontal */
+}
+
+body.dark .close-btn:hover {
+    color: #f44336; /* Color rojo para el hover de la "X" */
+}

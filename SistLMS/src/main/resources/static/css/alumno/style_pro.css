@@ -1,0 +1,603 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@300;600&display=swap');
+
+:root {
+    /* Colores primarios */
+    --clr-primary: #3498db; 
+    --clr-danger: #ff7782; 
+    --clr-success: #2ecc71; 
+    --clr-white: #ffffff; 
+    --clr-info-dark: #34495e; 
+    --clr-info-light: #20a5c6; 
+    --clr-dark: #333333; 
+    --clr-warning: #ff4edc; 
+    --clr-light: rgb(132,139,200,0.18); 
+    --clr-primary-variant: #111e88; 
+    --clr-dark-variant: #2c3e50; 
+    --clr-color-background: #fafafa; 
+
+    /* Estilos de tarjeta */
+    --card-border-radius: 2rem; 
+    --border-radius-1: 0.4rem; 
+    --border-radius-2: 0.8rem; 
+    --border-radius-3: 1.2rem; 
+    --card-padding: 1rem; 
+    --padding-1: 0.5rem; 
+    --box-shadow: 0 2rem 3rem var(--clr-light); 
+}
+
+.container {   
+    margin-top: 1.4rem;
+    width: auto;
+    padding: 30px; 
+}
+
+main input {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--clr-dark);
+}
+
+main .date {
+    display: inline-block;
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    margin-top: 1rem;
+    padding: 0.5rem 1.6rem;
+}
+
+main .insights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+
+main .insights > div {
+    background-color: var(--clr-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+}
+
+main .insights > div:hover {
+    box-shadow: none;
+}
+
+main .insights > div span {
+    background: coral;
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--clr-white);
+    font-size: 2rem;
+}
+
+main .insights > div.expenses span {
+    background: var(--clr-danger);
+}
+
+main .insights > div.income span {
+    background: var(--clr-success);
+}
+
+main .insights > div .middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .insights > div .middle h1 {
+    font-size: 1.6rem;
+}
+
+main h1 {
+    color: var(--clr-dark);
+}
+
+main .insights h1, main .insights h3, main .insights p {
+    color: var(--clr-dark);
+}
+
+main .insights .progress {
+    position: relative;
+    height: 68px;
+    width: 68px;
+    border-radius: 50%;
+}
+
+main .insights .svg {
+    height: 150px; 
+    position: absolute;
+    top: 0;
+}
+
+main .insights svg circle {
+    fill: none;
+    stroke: var(--clr-primary);
+    transform: rotate(270, 80, 80);  
+    stroke-width: 5;
+}
+
+main .insights .sales svg circle {
+    stroke-dashoffset: 10;
+    stroke-dasharray: 150;
+}
+
+main .insights .expenses svg circle {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 150;
+}
+
+main .insights .income svg circle {
+    stroke: var(--clr-success);
+}
+
+main .insights .progress .number {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .recent_order {
+    margin-top: 2rem;
+}
+
+main .recent_order h1 {
+    color: var(--clr-dark);
+}
+
+main .recent_order table {
+    background-color: var(--clr-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    color: rgb(97, 82, 145);
+}
+
+main .recent_order table:hover {
+    box-shadow: none;
+}
+
+main table tbody tr {
+    height: 3.8rem;
+    border-bottom: 1px solid var(--clr-white);
+    color: var(--clr-dark-variant);
+}
+
+main table tbody td {
+    height: 3.8rem;
+    border-bottom: 1px solid var(--clr-dark);
+}
+
+main table tbody tr:last-child td {
+    border: none;
+}
+
+main .recent_order a {
+    text-align: center;
+    display: block;
+    margin: 1rem;
+}
+
+/*tercera parte*/
+/* General styles */
+.right {
+    padding: 20px;
+    display: flex; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
+
+/* Remove background and box-shadow for h2 titles */
+.recent_updates h2,
+.sales_analytics h2 {
+    background: none;
+    box-shadow: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Recent Updates Section */
+.recent_updates {
+    flex: 1; 
+    min-width: 300px;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+/* Updates styles */
+.updates {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 2.7rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.updates:last-child {
+    border-bottom: none; 
+}
+
+
+.profile-photo1 img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.message p {
+    margin: 6px;
+    font-size: 0.9rem; 
+    color: #333;
+}
+
+/* Profile Info */
+.profile .info p {
+    margin: 0;
+    color: #333;
+}
+
+.profile .profile-photo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Sales Analytics Section */
+.sales_analytics {
+    flex: 1; 
+    min-width: 300px;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+/* Item styles for orders */
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 2.1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+    background-color: #6eefdb;
+    padding: 1rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: #ff6347;
+}
+
+.icon1 {
+    background-color: #fbb9ef;
+    padding: 1rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: #ff6347;
+}
+
+.icon2 {
+    background-color: #ebff54;
+    padding: 1rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: #ff6347;
+}
+
+.right_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.info h3 {
+    margin: 0;
+    color: #333;
+}
+
+.info small {
+    color: #888;
+}
+
+/* Order details */
+.order-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+}
+
+.order-details h5 {
+    margin: 0;
+    color: red;
+}
+
+.order-details h3 {
+    margin: 0.3rem 0 0;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Top bar styles */
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.theme-togglers {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-togglers span {
+    font-size: 24px;
+    cursor: pointer;
+    color: #333; 
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .insights {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    main .recent_order table {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    main .insights {
+        grid-template-columns: 1fr;
+    }
+    .right {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 560px) {
+    .container {
+        padding: 20px;
+    }
+
+    main .insights > div h1 {
+        font-size: 1.4rem;
+    }
+
+    main .recent_order table {
+        font-size: 0.7rem;
+    }
+}
+
+
+/*tabla*/
+.recent_order table {
+    width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
+    border-collapse: collapse; /* Evita bordes dobles */
+}
+
+.recent_order th, .recent_order td {
+    padding: 10px; /* Espacio interno para las celdas */
+    text-align: center; /* Centra el texto en las celdas */
+}
+
+.progress-circle {
+    position: relative;
+    width: 50px; /* Ajusta el tamaño según necesites */
+    height: 50px; /* Ajusta el tamaño según necesites */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff; /* Color del texto */
+    margin: 0 auto; /* Centra el círculo horizontalmente */
+}
+
+.progress-circle span {
+    position: absolute;
+    font-size: 12px; /* Ajusta el tamaño del texto según necesites */
+}
+
+/* Colores para los círculos de progreso */
+.progress-50 {
+    background: conic-gradient(
+        #ff9800 var(--progress), /* Color naranja para 50% */
+        #e0e0e0 var(--progress) /* Color gris para el resto */
+    );
+}
+
+.progress-100 {
+    background: conic-gradient(
+        #4caf50 var(--progress), /* Color verde para 100% */
+        #e0e0e0 var(--progress) /* Color gris para el resto */
+    );
+}
+
+.progress-75 {
+    background: conic-gradient(
+        #2196f3 var(--progress), /* Color azul para 75% */
+        #e0e0e0 var(--progress) /* Color gris para el resto */
+    );
+}
+
+
+
+
+/*actualizaciones*/
+
+.recent_updates h2 {
+    color: #0b0b0b; 
+    margin-bottom: 17px; 
+}
+
+.updates:hover {
+    background-color: #e2f0ff; /* Color de fondo al pasar el mouse */
+    transform: scale(1.02); /* Efecto de escala al pasar el mouse */
+}
+
+.profile-photo1 img {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    margin-right: 15px; /* Margen derecho */
+}
+.message b {
+    color: #db71c4;
+    font-size: 16px; 
+}
+
+.message p {
+    color: #0e0e0e; 
+    font-size: 16px; 
+}
+
+/* Animación de entrada */
+.fade-in {
+    opacity: 0; /* Comenzar invisible */
+    transform: translateY(20px); /* Mover hacia abajo */
+    animation: fadeIn 0.5s forwards; /* Aplicar animación */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Hacer visible */
+        transform: translateY(0); /* Regresar a la posición original */
+    }
+}
+
+
+
+/* Modo oscuro para el fondo y el texto general */
+body.dark {
+    background-color: #333;
+    color: #ffffff;
+}
+
+/* Sidebar */
+body.dark .side-bar {
+    background-color: #242222;
+  
+}
+
+body.dark .side-bar .name,
+body.dark .side-bar .role,
+body.dark .side-bar a {
+    color: #ffffff;
+}
+
+
+/* Bordes y texto en gris oscuro para contenedores y tablas */
+body.dark .container h1,
+body.dark .container h2, 
+body.dark table th,
+body.dark table td {
+    color: #ffffff;
+    border-color: #555;
+}
+
+/* Tarjetas de progreso */
+body.dark .insights .sales,
+body.dark .insights .expenses,
+body.dark .insights .income {
+    background-color: #282727;
+    border: 1px solid #555;
+    color: #ffffff;
+}
+
+body.dark .left h3,
+body.dark .progress .number {
+    color: #ffffff;
+}
+
+body.dark .progress svg circle {
+    stroke: #ffffff;
+}
+
+.progress {
+    margin-right: 25px;
+}
+
+/* Sección de actualizaciones recientes y analíticas */
+body.dark .recent_updates,
+body.dark .sales_analytics {
+    background-color: #333;
+    border: 1px solid #444;
+}
+
+body.dark table {
+    background-color: #333;
+    color: #ffffff;
+    border-color: #555;
+}
+
+body.dark table th, 
+body.dark table td {
+    background-color: #242222;
+    border-color: #555;
+    padding: 10px;
+}
+
+/* Fondo oscuro para cada actualización (.updates.fade-in) */
+body.dark .recent_updates .updates.fade-in,
+body.dark .sales_analytics .item {
+    background-color: #242222;
+    border: 1px solid #555;
+
+}
+
+/* Texto de actualización */
+body.dark .updates .message p,
+body.dark .sales_analytics .right_text .info h3,
+body.dark .sales_analytics .right_text .info small,
+body.dark .sales_analytics h2 {
+    color: #ffffff;
+}
+
+/* Detalles de las órdenes */
+body.dark .sales_analytics .order-details h5.success,
+body.dark .sales_analytics .order-details h3 {
+    color: #ffffff;
+}
+
+/* Colores para iconos */
+body.dark .sales_analytics .item .icon,
+body.dark .sales_analytics .item .icon1,
+body.dark .sales_analytics .item .icon2 {
+    color: #ffffff;
+}
+
+/* Color de subtítulo y texto muted */
+body.dark .text-muted {
+    color: #cccccc;
+}
+
+/* Colores para estados */
+body.dark .good {
+    color: #9acd32; /* verde claro */
+}
+
+body.dark .warning {
+    color: #ffa500; /* naranja */
+}

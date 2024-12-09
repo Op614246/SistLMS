@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header th:fragment="headerProf" class="header">
+        <div class="flex">
+            <a href="home.html" class="logo">
+                <img src="/images/logito.jpg" alt="Logo" class="logo-image" />
+                <strong><samp> </samp> Juan Pablo II</strong>
+            </a>
+
+            <div class="icons">
+                <div id="user-btn" class="fas fa-user"></div>
+                <div id="notification-btn" class="fas fa-bell" style="cursor: pointer"></div>
+                <div id="calendar-btn" class="fas fa-calendar" style="cursor: pointer"></div>
+                <input type="text" id="calendar" class="calendar" style="display: none" readonly />
+                <div id="toggle-btn" class="fas fa-sun"></div>
+                <div id="menu-btn" class="fas fa-bars"></div>
+                <div id="search-btn" class="fas fa-search"></div>
+            </div>
+
+            <div class="profile">
+                <img src="/images/pic-7.jpg" class="image" alt="">
+                <h3 class="name"
+                    th:text="${#authentication.principal.nombre} + ' ' + ${#authentication.principal.apellido}"></h3>
+                <!-- Muestra el nombre del usuario logueado -->
+                <p class="role">
+                    <span sec:authorize="hasRole('ADMIN')">Administrador</span>
+                    <span sec:authorize="hasRole('TERAPEUTA')">Terapeuta</span>
+                    <span sec:authorize="hasRole('ESTUDIANTE')">Estudiante</span>
+                </p>
+                <a href="/verPerfilProf" class="btn">Ver Perfil</a>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn-logout">Cerrar Sesion</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div th:fragment="formCurso" id="create-course-modal" class="modal">
+        <div class="modal-content">
+           <span class="close-btn">&times;</span>
+           <h2>Crear Nuevo Curso</h2>
+           <form th:action="@{/registrarCurso}" method="post" enctype="multipart/form-data" id="create-course-form">
+              <label for="nombre">Nombre del Curso:</label>
+              <input type="text" id="nombre" name="nombre" required>
+              <label for="descripcion">Descripción del Curso</label>
+              <textarea type="text" id="descripcion" name="descripcion" rows="3"></textarea>
+              <label for="image">Imagen del Curso:</label>
+              <input type="file" id="image" name="image" accept="image/*" required>
+              <button type="submit" class="btn">Crear</button>
+           </form>
+        </div>
+     </div>
+
+    <div th:fragment="sidebarProf" class="side-bar">
+        <div id="close-btn">
+            <i class="fas fa-times"></i>
+        </div>
+
+        <div class="profile">
+            <img src="/images/pic-7.jpg" class="image" alt="">
+            <h3 class="name"
+                th:text="${#authentication.principal.nombre} + ' ' + ${#authentication.principal.apellido}"></h3>
+            <!-- Muestra el nombre del usuario logueado -->
+            <p class="role">
+                <span sec:authorize="hasRole('ADMIN')">Administrador</span>
+                <span sec:authorize="hasRole('TERAPEUTA')">Terapeuta</span>
+                <span sec:authorize="hasRole('ESTUDIANTE')">Estudiante</span>
+            </p>
+            <a href="/verPerfilProf" class="btn">Ver Perfil</a>
+        </div>
+
+        <nav class="navbar">
+            <a href="/"><i class="fas fa-graduation-cap"></i><span>Cursos</span></a>
+            <a href="#" id="create-course-link"><i class="fas fa-plus"></i><span>Crear Curso</span></a>
+            <a href="/comentarios"><i class="fas fa-comment-dots"></i><span>Enviar Comentarios</span></a>
+            <a href="calendario.html"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+            <a href="ayuda.html"><i class="fas fa-headset"></i><span>Ayuda</span></a>
+        </nav>
+    </div>
+</body>
+
+</html>

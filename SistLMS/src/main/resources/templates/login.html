@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Y Registro - D'Benito</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/login2.css">
+</head>
+
+<body
+    style="margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background-image: linear-gradient(100deg, #000000, #00000020), url('images/login.jpg'); background-size: cover; background-position: center;">
+
+    <main>
+        <div class="contenedor__todo">
+            <div class="caja__trasera">
+                <div class="caja__trasera-login">
+                    <h3>¿Ya tienes una cuenta?</h3>
+                    <p>Inicia sesión para entrar en la página</p>
+                    <button id="btn__iniciar-sesion">Iniciar sesión</button>
+                </div>
+                <div class="caja__trasera-register">
+                    <h3>¿Aún no tienes una cuenta?</h3>
+                    <p>Regístrate para que puedas iniciar sesión</p>
+                    <button id="btn__registrarse">Regístrarse</button>
+                </div>
+            </div>
+            <!-- Formulario de login y registro-->
+            <div class="contenedor__login">
+                <!--Login-->
+                <form th:action="@{/login}" method="post" class="formulario__login">
+                    <h2>Iniciar Sesión</h2>
+                    <div class="mb-3">
+                        <!-- Nombre del campo: 'username' -->
+                        <input type="text" id="username" name="username" class="form-control"
+                            placeholder="Correo Electrónico" required>
+                    </div>
+                    <div class="mb-3">
+                        <!-- Nombre del campo: 'password' -->
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Contraseña" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+                </form>
+
+
+                <!--Registro-->
+                <form th:action="@{/registrar}" method="post" enctype="multipart/form-data"
+                    class="formulario__register mt-4">
+                    <!-- Mostrar mensaje de éxito -->
+                    <div th:if="${mensaje}" class="alert alert-success">
+                        <p th:if="${mensaje == 'correoRegistrado'}">El correo electrónico ya está registrado.</p>
+                        <p th:if="${mensaje == 'registroExitoso'}">Registro exitoso. Revisa tu correo para confirmar tu
+                            cuenta.</p>
+                    </div>
+
+                    <h2>Registrar</h2>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Nombre<span>*</span></label>
+                            <input type="text" name="name" class="form-control" placeholder="Ingrese nombre" required
+                                maxlength="50" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Apellido<span>*</span></label>
+                            <input type="text" name="surname" class="form-control" placeholder="Ingrese apellidos"
+                                required maxlength="50" />
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Correo Electrónico<span>*</span></label>
+                            <input type="email" name="email" class="form-control" placeholder="Ingresa tu correo"
+                                required maxlength="50" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Contraseña<span>*</span></label>
+                            <input type="password" name="password" class="form-control"
+                                placeholder="Ingrese su nueva contraseña" required maxlength="24" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Descripción de Salud</label>
+                        <textarea name="health_description" class="form-control"
+                            placeholder="Describe tu estado de salud" maxlength="200"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Informe de Salud</label>
+                        <input type="file" name="health_report" class="form-control" accept="application/pdf,image/*" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Selecciona Cursos<span>*</span></label>
+                        <div class="row">
+                            <!-- Aquí vamos a iterar dinámicamente sobre los cursos -->
+                            <div th:each="curso : ${cursos}" class="col-6 col-md-4">
+                                <label>
+                                    <input type="checkbox" name="courses[]" th:value="${curso.nombre}"
+                                        th:id="${curso.idcurso}" />
+                                    <span th:text="${curso.nombre}"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100">Registrar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="/js/login.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
