@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="UTF-8">
@@ -21,93 +20,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 </head>
 
 <body>
-  <!-- Header actualizado -->
-  <header class="header">
-    <section class="flex">
-      <a href="home.html" class="logo">
-        <img src="images/logito.jpg" alt="Logo" class="logo-image" />
-        <strong><samp style="color: #4dd282; margin-right: 4px">Juan </samp> Pablo II</strong>
-      </a>
+  <div th:replace="fragments/header :: header"></div>
+  <div th:replace="fragments/header :: sidebar"></div>
 
-      <div class="icons">
-        <div id="search-btn" class="fas fa-search"></div>
-        <div id="user-btn" class="fas fa-user"></div>
-        <div id="notification-btn" class="fas fa-bell" style="cursor: pointer"></div>
-        <div id="calendar-btn" class="fas fa-calendar" style="cursor: pointer"></div>
-        <input type="text" id="calendar" class="calendar" style="display: none" readonly />
-        <div id="toggle-btn" class="fas fa-sun"></div>  
-        <div id="menu-btn" class="fas fa-bars"></div>            
-     </div>
-
-      <div class="profile">
-        <img src="images/pic-1.jpg" class="image" alt="" />
-        <h3 class="name">Lucia Martinez</h3>
-        <p class="role">Estudiante</p>
-        <a href="perfil.html" class="btn">Ver Perfil</a>
-      </div>
-      <div class="notification-bar">
-        <div class="notification-header">
-            <button class="back-btn"><i class="fas fa-times"></i></button>
-            <h2>Notificaciones</h2>
-        </div>
-        <div class="notifications">
-            <!-- Notificación 1-->
-            <div class="notification tarea">
-                <div class="notification-icon"><i class="fas fa-file-alt"></i></div>
-                <div class="notification-content">
-                    <p class="notification-course">Curso: Terapia Cognitiva</p>
-                    <p class="notification-week">Sección de Desarrollo: 5</p>
-                    <p class="notification-type">Tipo de Tarea: Evaluación</p>
-                    <p class="notification-due">Fecha de Vencimiento: 23 oct.</p>
-                </div>
-            </div>
-            <!-- Notificación 2-->
-            <div class="notification encuesta">
-                <div class="notification-icon"><i class="fas fa-poll"></i></div>
-                <div class="notification-content">
-                    <p class="notification-course">Curso: Terapia Conductual</p>
-                    <p class="notification-week">Sección de Desarrollo: 3</p>
-                    <p class="notification-type">Tipo de Tarea: Encuesta</p>
-                    <p class="notification-due">Fecha de Vencimiento: 25 oct.</p>
-                </div>
-            </div>
-            <!-- Notificación 3-->
-            <div class="notification comentario">
-                <div class="notification-icon"><i class="fas fa-comments"></i></div>
-                <div class="notification-content">
-                    <p class="notification-course">Curso: Terapia Familiar</p>
-                    <p class="notification-week">Sección de Desarrollo: 2</p>
-                    <p class="notification-type">Tipo de Tarea: Comentario en Foro</p>
-                    <p class="notification-date">Fecha de Ingreso: 21 oct.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
-  </header>
-
-  <!-- Sidebar actualizado -->
-  <div class="side-bar">
-    <div id="close-btn">
-      <i class="fas fa-times"></i>
-    </div>
-
-    <div class="profile">
-      <img src="images/pic-1.jpg" class="image" alt="" />
-      <h3 class="name">Lucia Martinez</h3>
-      <p class="role">Estudiante</p>
-      <a href="perfil.html" class="btn">Ver Perfil</a>
-    </div>
-
-    <nav class="navbar">
-      <a href="cursos.html"><i class="fas fa-graduation-cap"></i><span>Cursos</span></a>
-      <a href="tarea.html"><i class="fas fa-file-alt"></i><span>Tareas</span></a>
-      <a href="progreso.html"><i class="fas fa-chart-line"></i><span>Progreso</span></a>
-      <a href="calendario.html"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
-    </nav>
-  </div>
-
-  
   <div class="container">
     <!-- Sección de progreso -->
     <main>
@@ -115,232 +30,233 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
       <!-- Progreso 1 -->
       <div class="container">
-      <div class="insights">
-        <div class="sales">
-          <span class="material-symbols-sharp">school</span>
-          <div class="middle">
-            <div class="left">
-              <h3>Cursos Completados</h3>
-              <h1>5/6</h1>
+        <div class="insights">
+          <div class="sales">
+            <span class="material-symbols-sharp">school</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Cursos Completados</h3>
+                <h1>5/6</h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle r="30" cy="40" cx="40"></circle>
+                </svg>
+                <div class="number">80%</div>
+              </div>
             </div>
-            <div class="progress">
-              <svg>
-                <circle r="30" cy="40" cx="40"></circle>
-              </svg>
-              <div class="number">80%</div>
-            </div>
+            <small>En Progreso</small>
           </div>
-          <small>En Progreso</small>
-        </div>
 
-        <!-- Progreso 2 -->
-        <div class="expenses">
-          <span class="material-symbols-sharp">check_circle</span>
-          <div class="middle">
-            <div class="left">
-              <h3>Objetivos Cumplidos</h3>
-              <h1>7/10</h1>
+          <!-- Progreso 2 -->
+          <div class="expenses">
+            <span class="material-symbols-sharp">check_circle</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Objetivos Cumplidos</h3>
+                <h1>7/10</h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle r="30" cy="40" cx="40"></circle>
+                </svg>
+                <div class="number">80%</div>
+              </div>
             </div>
-            <div class="progress">
-              <svg>
-                <circle r="30" cy="40" cx="40"></circle>
-              </svg>
-              <div class="number">80%</div>
-            </div>
+            <small>Últimos 30 Días</small>
           </div>
-          <small>Últimos 30 Días</small>
-        </div>
 
-        <!-- Progreso 3 -->
-        <div class="income">
-          <span class="material-symbols-sharp">assignment</span>
-          <div class="middle">
-            <div class="left">
-              <h3>Evaluaciones en Proceso</h3>
-              <h1>2/5</h1>
+          <!-- Progreso 3 -->
+          <div class="income">
+            <span class="material-symbols-sharp">assignment</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Evaluaciones en Proceso</h3>
+                <h1>2/5</h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle r="30" cy="40" cx="40"></circle>
+                </svg>
+                <div class="number">80%</div>
+              </div>
             </div>
-            <div class="progress">
-              <svg>
-                <circle r="30" cy="40" cx="40"></circle>
-              </svg>
-              <div class="number">80%</div>
-            </div>
+            <small>Mejorando</small>
           </div>
-          <small>Mejorando</small>
         </div>
       </div>
-    </div>
 
       <!-- Órdenes recientes -->
-<div class="recent_order">
-  <h1>Órdenes Recientes</h1><br><br>
-  <table>
-      <thead>
-          <tr>
+      <div class="recent_order">
+        <h1>Órdenes Recientes</h1><br><br>
+        <table>
+          <thead>
+            <tr>
               <th>Curso</th>
               <th>Evaluación</th>
               <th>Progreso</th>
               <th>Estado</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
               <td>Curso 2</td>
               <td>Examen 1</td>
               <td>
-                  <div class="progress-circle progress-50" style="--progress: 50%;">
-                      <span>50%</span>
-                  </div>
+                <div class="progress-circle progress-50" style="--progress: 50%;">
+                  <span>50%</span>
+                </div>
               </td>
               <td class="good">¡Sigue así!</td>
-          </tr>
-          <tr>
+            </tr>
+            <tr>
               <td>Curso 3</td>
               <td>Examen Final</td>
               <td>
-                  <div class="progress-circle progress-100" style="--progress: 100%;">
-                      <span>100%</span>
-                  </div>
+                <div class="progress-circle progress-100" style="--progress: 100%;">
+                  <span>100%</span>
+                </div>
               </td>
               <td class="good">¡Gran esfuerzo!</td>
-          </tr>
-          <tr>
+            </tr>
+            <tr>
               <td>Curso 4</td>
               <td>Tarea 3</td>
               <td>
-                  <div class="progress-circle progress-75" style="--progress: 75%;">
-                      <span>75%</span>
-                  </div>
+                <div class="progress-circle progress-75" style="--progress: 75%;">
+                  <span>75%</span>
+                </div>
               </td>
               <td class="warning">¡Estás mejorando!</td>
-          </tr>
-      </tbody>
-  </table>
-</div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
 
     </main>
 
     <!-- Sección derecha -->
-   
-<div class="right">
-  <div></div>
 
- <!-- Recent Updates section -->
-<!-- Recent Updates section -->
-<div class="recent_updates">
-  <h2>Actualizaciones Recientes</h2>
+    <div class="right">
+      <div></div>
 
-  <div class="updates fade-in">
-      <div class="profile-photo1">
-          <img src="images/pic-1.jpg" alt="Perfil de Estudiante">
-      </div>
-      <div class="message">
-          <p><b>¡Felicidades!</b> Has completado la Sección 1 de tu curso.</p>
-      </div>
-  </div>
+      <!-- Recent Updates section -->
+      <!-- Recent Updates section -->
+      <div class="recent_updates">
+        <h2>Actualizaciones Recientes</h2>
 
-  <div class="updates fade-in">
-      <div class="profile-photo1">
-          <img src="images/pic-1.jpg" alt="Perfil de Estudiante">
-      </div>
-      <div class="message">
-          <p>Has recibido un <b>comentario</b> en tu última tarea.</p>
-      </div>
-  </div>
+        <div class="updates fade-in">
+          <div class="profile-photo1">
+            <img src="images/pic-1.jpg" alt="Perfil de Estudiante">
+          </div>
+          <div class="message">
+            <p><b>¡Felicidades!</b> Has completado la Sección 1 de tu curso.</p>
+          </div>
+        </div>
 
-  <div class="updates fade-in">
-      <div class="profile-photo1">
-          <img src="images/pic-1.jpg" alt="Perfil de Estudiante">
+        <div class="updates fade-in">
+          <div class="profile-photo1">
+            <img src="images/pic-1.jpg" alt="Perfil de Estudiante">
+          </div>
+          <div class="message">
+            <p>Has recibido un <b>comentario</b> en tu última tarea.</p>
+          </div>
+        </div>
+
+        <div class="updates fade-in">
+          <div class="profile-photo1">
+            <img src="images/pic-1.jpg" alt="Perfil de Estudiante">
+          </div>
+          <div class="message">
+            <p><b>¡Has ganado una medalla!</b> por tu esfuerzo en el curso!</p>
+          </div>
+        </div>
       </div>
-      <div class="message">
-          <p><b>¡Has ganado una medalla!</b> por tu esfuerzo en el curso!</p>
-      </div>
-  </div>
-</div>
 
 
-  <!-- Sales Analytics section -->
-<div class="sales_analytics">
-  <h2>Participación y Progreso</h2>
+      <!-- Sales Analytics section -->
+      <div class="sales_analytics">
+        <h2>Participación y Progreso</h2>
 
-  <div class="item participation">
-      <div class="icon">
-          <span class="material-symbols-sharp">group</span>
-      </div>
-      <div class="right_text">
-          <div class="info">
+        <div class="item participation">
+          <div class="icon">
+            <span class="material-symbols-sharp">group</span>
+          </div>
+          <div class="right_text">
+            <div class="info">
               <h3>Estudiantes Inscritos</h3>
               <small class="text-muted">Última actualización 1 Hora</small>
-          </div>
-          <div class="order-details">
+            </div>
+            <div class="order-details">
               <h5 class="success">+20 Nuevos</h5>
               <h3>1200</h3>
+            </div>
           </div>
-      </div>
-  </div>
+        </div>
 
-  <div class="item courses">
-      <div class="icon1">
-          <span class="material-symbols-sharp">book</span>
-      </div>
-      <div class="right_text">
-          <div class="info">
+        <div class="item courses">
+          <div class="icon1">
+            <span class="material-symbols-sharp">book</span>
+          </div>
+          <div class="right_text">
+            <div class="info">
               <h3>Cursos Completados</h3>
               <small class="text-muted">Última actualización 1 Hora</small>
-          </div>
-          <div class="order-details">
+            </div>
+            <div class="order-details">
               <h5 class="success">+5 Nuevos</h5>
               <h3>350</h3>
+            </div>
           </div>
-      </div>
-  </div>
+        </div>
 
-  <div class="item feedback">
-      <div class="icon2">
-          <span class="material-symbols-sharp">thumb_up</span>
-      </div>
-      <div class="right_text">
-          <div class="info">
+        <div class="item feedback">
+          <div class="icon2">
+            <span class="material-symbols-sharp">thumb_up</span>
+          </div>
+          <div class="right_text">
+            <div class="info">
               <h3>Comentarios</h3>
               <small class="text-muted">Última actualización 1 Hora</small>
-          </div>
-          <div class="order-details">
+            </div>
+            <div class="order-details">
               <h5 class="success">+15 Nuevos</h5>
               <h3>250</h3>
+            </div>
           </div>
+        </div>
       </div>
+
+    </div>
   </div>
-</div>
+  </div>
 
-</div>
-</div></div>
+  <footer class="footer">
+    &copy; LMS @ 2024 <span>Desarrollado por Eqipo LMS</span> | Todos los derechos reservados.
+  </footer>
 
-<footer class="footer">
-  &copy; LMS @ 2024  <span>Desarrollado por Eqipo LMS</span> | Todos los derechos reservados.
-</footer>
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
- <!-- Flatpickr JS -->
- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
- <script>
+  <script>
     // Inicializar Flatpickr
     flatpickr("#calendar", {
-       dateFormat: "d/m/Y", // Formato de fecha
-       allowInput: false, // No permitir entrada manual
-       onClose: function (selectedDates, dateStr, instance) {
-          document.getElementById("calendar").style.display = "none"; // Ocultar el campo de entrada después de seleccionar
-       },
+      dateFormat: "d/m/Y", // Formato de fecha
+      allowInput: false, // No permitir entrada manual
+      onClose: function (selectedDates, dateStr, instance) {
+        document.getElementById("calendar").style.display = "none"; // Ocultar el campo de entrada después de seleccionar
+      },
     });
 
     // Hacer que el calendario se muestre al hacer clic en el ícono
     document.getElementById("calendar-btn").onclick = function () {
-       document.getElementById("calendar").style.display = "block"; // Mostrar el campo de entrada
-       document.getElementById("calendar").click(); // Simula un clic en el campo de entrada para abrir el calendario
+      document.getElementById("calendar").style.display = "block"; // Mostrar el campo de entrada
+      document.getElementById("calendar").click(); // Simula un clic en el campo de entrada para abrir el calendario
     };
- </script>
- <!-- custom js file link  -->
- <script src="js/alumno/scriptA.js"></script>
+  </script>
+  <!-- custom js file link  -->
+  <script src="js/alumno/scriptA.js"></script>
 
 </body>
 
