@@ -1231,6 +1231,13 @@ section{
    text-align: center;
 }
 
+.form-container form h4{
+   margin-top: 10px;
+   font-size: 2rem;
+   color: var(--black);
+   text-align: center;
+}
+
 .form-container form p{
    font-size: 1.7rem;
    color: var(--light-color);

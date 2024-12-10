@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualizar contraseña</title>
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="/css/alumno/styleA.css">
+  <link rel="stylesheet" href="/css/alumno/noti.css">
+
+</head>
+
+<body>
+  <div th:replace="fragments/header :: header"></div>
+  <div th:replace="fragments/header :: sidebar"></div>
+
+  <section class="form-container">
+    <form action="/actualizarContrasena" method="post" enctype="multipart/form-data">
+      <h3>Actualizar Contraseña</h3>
+      <p>Contraseña Actual</p>
+      <input type="password" name="old_pass" placeholder="Ingrese su Contraseña" maxlength="20" class="box">
+      <p>Nueva Contraseña</p>
+      <input type="password" name="new_pass" placeholder="Ingrese su Nueva Contraseña" maxlength="20" class="box">
+      <p>Confirmar Contraseña</p>
+      <input type="password" name="c_pass" placeholder="Confirme su Contraseña" maxlength="20" class="box">
+      <input type="submit" value="Confirmar" class="btn">
+      <h4 th:if="${error}" class="error-message" th:text="${error}"></h4>
+      <h4 th:if="${success}" class="success-message" th:text="${success}"></h4>
+  </form>
+  
+  </section>
+
+  <footer class="footer">
+    &copy; LMS @ 2024 <span>Desarrollado por Eqipo LMS</span> | Todos los derechos reservados.
+  </footer>
+
+  <script src="/js/alumno/scriptA.js"></script>
+</body>
+
+</html>

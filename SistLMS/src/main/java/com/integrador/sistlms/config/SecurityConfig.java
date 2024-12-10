@@ -6,7 +6,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.integrador.sistlms.security.CustomAuthenticationSuccessHandler;
@@ -32,9 +31,9 @@ public class SecurityConfig {
                         .requestMatchers("/confirm", "/registrar", "/images/**", "/css/**", "/js/**", "/uploads/**",
                                 "/login")
                         .permitAll()
-                        .requestMatchers("/cursos", "/verPerfil", "/progreso", "/header")
+                        .requestMatchers("/cursos", "/verPerfil", "/progreso", "/header", "/actualizarContrasena")
                         .hasRole("ESTUDIANTE")
-                        .requestMatchers("/", "/registrarCurso", "/comentarios", "/alumnos-por-curso/**", "/notificaciones-enviadas", "/notificaciones/**", "/verPerfilProf", "/headerProf")
+                        .requestMatchers("/", "/registrarCurso", "/comentarios", "/alumnos-por-curso/**", "/notificaciones-enviadas", "/notificaciones/**", "/verPerfilProf", "/headerProf", "/actualizarContrasenaProf")
                         .hasRole("TERAPEUTA")
                         .anyRequest().authenticated())
                 .formLogin(form -> form
@@ -59,7 +58,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
