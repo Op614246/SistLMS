@@ -31,9 +31,9 @@ public class SecurityConfig {
                         .requestMatchers("/confirm", "/registrar", "/images/**", "/css/**", "/js/**", "/uploads/**",
                                 "/login")
                         .permitAll()
-                        .requestMatchers("/cursos", "/verPerfil", "/progreso", "/header", "/actualizarContrasena")
+                        .requestMatchers("/cursos", "/verPerfil", "/progreso", "/header", "/actualizarContrasena", "/actualizarCorreo")
                         .hasRole("ESTUDIANTE")
-                        .requestMatchers("/", "/registrarCurso", "/comentarios", "/alumnos-por-curso/**", "/notificaciones-enviadas", "/notificaciones/**", "/verPerfilProf", "/headerProf", "/actualizarContrasenaProf")
+                        .requestMatchers("/", "/registrarCurso", "/comentarios", "/alumnos-por-curso/**", "/notificaciones-enviadas", "/notificaciones/**", "/verPerfilProf", "/headerProf", "/actualizarContrasenaProf", "/actualizarCorreoProf")
                         .hasRole("TERAPEUTA")
                         .anyRequest().authenticated())
                 .formLogin(form -> form
