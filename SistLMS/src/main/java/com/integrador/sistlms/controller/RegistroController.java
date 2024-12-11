@@ -18,6 +18,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -94,5 +95,32 @@ public class RegistroController {
         emailService.sendConfirmationEmail(email, token);
 
         return "redirect:/login?mensaje=registroExitoso";
+    }
+
+    @GetMapping("/inscribirse")
+    public String inscribirse(@RequestParam Long cursoId, @RequestParam Long usuarioId) {
+        // Buscar curso y usuario por ID
+        Optional<Curso> cursoOpt = cursoRepository.findById(cursoId);
+        Optional<Usuario> usuarioOpt = usuarioRepository.findById(usuarioId);
+
+        if (cursoOpt.isPresent() && usuarioOpt.isPresent()) {
+            Curso curso = cursoOpt.get();
+            Usuario usuario = usuarioOpt.get();
+
+            // Crear una nueva inscripción
+            Inscripcion inscripcion = new Inscripcion();
+            inscripcion.setCurso(curso);
+            inscripcion.setUsuario(usuario);
+            inscripcion.setFechaInscripcion(LocalDate.now());
+            inscripcion.setEstado("Activa");
+
+            inscripcionRepository.save(inscripcion);
+
+            // Redirigir a una página de confirmación o éxito
+            return "inscripcion-exitosa";
+        }
+
+        // Manejar caso en que no se encuentren el curso o el usuario
+        return "redirect:/error-inscripcion";
     }
 }

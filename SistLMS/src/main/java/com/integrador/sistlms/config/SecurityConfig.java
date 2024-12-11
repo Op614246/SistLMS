@@ -29,7 +29,7 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/confirm", "/registrar", "/images/**", "/css/**", "/js/**", "/uploads/**",
-                                "/login")
+                                "/login", "/inscribirse")
                         .permitAll()
                         .requestMatchers("/cursos", "/verPerfil", "/progreso", "/header", "/actualizarContrasena", "/actualizarCorreo")
                         .hasRole("ESTUDIANTE")

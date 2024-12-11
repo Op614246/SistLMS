@@ -21,9 +21,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.integrador.sistlms.model.Curso;
 import com.integrador.sistlms.model.Inscripcion;
+import com.integrador.sistlms.model.Usuario;
 import com.integrador.sistlms.repository.InscripcionRepository;
+import com.integrador.sistlms.repository.UsuarioRepository;
 import com.integrador.sistlms.security.CustomUserDetails;
 import com.integrador.sistlms.service.CursoService;
+import com.integrador.sistlms.service.EmailService;
 
 @Controller
 public class HomeController {
@@ -35,6 +38,12 @@ public class HomeController {
 
     @Autowired
     private CursoService cursoService;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -80,6 +89,17 @@ public class HomeController {
         }
 
         cursoService.saveCurso(curso);
+
+        // Enviar notificaciones con botón de inscripción
+        List<Usuario> usuariosConRol1 = usuarioRepository.findUsuariosConRol(1);
+        for (Usuario usuario : usuariosConRol1) {
+            emailService.sendNewCourseNotification(
+                    usuario.getEmail(),
+                    curso.getNombre(),
+                    curso.getDescripcion(),
+                    curso.getIdcurso(),
+                    usuario.getIdusuario());
+        }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
